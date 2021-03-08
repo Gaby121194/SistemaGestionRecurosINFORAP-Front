@@ -1,0 +1,11 @@
+<form  [formGroup]="formGroup"  autocomplete="off" (ngSubmit)="saveForm()">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div *ngIf="isLoadingForm | async" class=" ">
+        <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+        </mat-progress-spinner>
+      </div>
+      <ng-content select=".form-body"></ng-content>
+    </div>
+  </div>
+</form>

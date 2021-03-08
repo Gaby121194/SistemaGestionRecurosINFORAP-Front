@@ -1,0 +1,44 @@
+
+<div class="mb-3 w-100 ">
+  <div class="row ml-0 position-relative w-100">
+    <div class="text-box p-0 {{class}}" [formGroup]="form" [ngClass]="{'text-box-error': hasError && isSubmitted}">
+      <label class="text-muted-sm mb-0 mt-0 ml-3  "   style="width: 100%;">
+        {{required?labelName+' *':labelName}}
+      </label>
+      <input type="hidden"  formControlName="{{controlName}}"/>
+      <div   class="position-relative cursor-pointer">
+        <div   *ngIf="data && disabled " ngbDropdown>
+          <div class="w-100 ml-3 " id="dropdownMenuButton" ngbDropdownToggle>
+            <!-- <span> {{selectedText}} </span> -->
+            <input  style="width: 60% !important;" class="mt-0 pt-0 " 
+               placeholder="{{ placeholderName }}"
+                readonly="true"
+                value="{{selectedText}}"    
+                required          
+               />
+            <i class="material-icons mr-3" style="float: right;" >keyboard_arrow_down</i>
+          </div>
+          <!-- <a class="label centered cursor-pointer label ml-3 w-100"  >
+           
+          </a> -->
+          <div   class="w-100 cursor-pointer" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+            <a (click)="onChange(item.key,item.value)" *ngFor="let item of data" ngbDropdownItem>
+              <label>
+                {{item.value}}
+              </label>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <div *ngIf="hasError && isSubmitted" class="cursor-pointer icons error bg-red text-box-icon-error " ngbPopover="Este campo es requerido" triggers="mouseenter:mouseleave" popoverClass="pop-hover-danger"></div>
+
+  </div>
+ 
+  <!-- <div class="row">
+    <app-show-errors *ngIf="submitted" [control]="form.controls[controlName]"></app-show-errors>
+  </div> -->
+</div>
+
+ 

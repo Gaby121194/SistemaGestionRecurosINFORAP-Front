@@ -1,0 +1,29 @@
+<div class="card-body pl-4 " style=" margin-right: 100px; margin-left: 100px; margin-bottom: 50px;">
+  <div class=" mt-2">
+    <h2 class="title row ">{{title}}</h2>
+    <label>Seleccione de la lista</label>
+    <app-form (saveEvent)="save()" [formGroup]="formGroup">
+      <div class="form-body">
+        <br />
+        <input type="hidden" formControlName="idRecurso2" required>
+        <app-autocomplete 
+          [placeholderName]="'Seleccione ...'" 
+          [class]="'col-lg-12 col-md-12 col-sm-12'"
+          [data]="recursos" 
+          [labelName]="labelName" 
+          [submitted]="submitted" 
+          [controlName]="'idRecurso2'"
+          [form]="formGroup">
+      </app-autocomplete>
+        <div class="row ml-0 mb-5  ">
+          <button mat-dialog-close="true" type="submit" [disabled]="formGroup.invalid"
+            class="btn btn-primary col-lg-3 col-md-4 col-sm-6">Guardar
+            <i class="material-icons f-right">add</i>
+          </button>
+          <button mat-dialog-close="true" class="btn btn-default ml-2 col-3"> Cancelar <i
+              class="material-icons f-right">cancel</i></button>
+        </div>
+      </div>
+    </app-form>
+  </div>
+</div>

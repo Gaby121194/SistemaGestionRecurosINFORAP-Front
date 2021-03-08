@@ -1,0 +1,33 @@
+<app-basic-list [title]="'Requisitos'"
+ [showCreate]="true"
+ [showSearch] = "false"
+ (dataChange)="applyFilter($event)"
+ (onCreateEvent)="onCreate()">
+    <div class="list-body">
+        <table class="table  mr-3 w-100   p-0">
+            <thead>
+                <tr>
+                    <th>Fecha de creación</th>
+                    <th>Descripción</th>
+                    <th>Regla</th>                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="position: relative;" *ngFor="let item of requisitos; index as i">
+                    <td>
+                        {{item.creationDate | date : 'dd-MM-yyyy'}}
+                    </td>
+                    <td>
+                        {{item.descripcion}}
+                    </td>
+                    <td> {{item.transcripcionRegla}}</td>
+                    <td>
+                        <button (click)="delete(item.id)" class="btn btn-sm btn-danger"><i
+                                class="material-icons">delete</i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</app-basic-list>

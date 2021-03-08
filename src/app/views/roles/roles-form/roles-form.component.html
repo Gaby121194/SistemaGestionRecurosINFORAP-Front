@@ -1,0 +1,49 @@
+<div class="card-body" style=" margin-right: 100px; margin-left: 100px; margin-bottom: 50px;">
+  <div class=" mt-2">
+    <h2 class="title row ">
+      {{title}}
+    </h2>
+    <div class="row pl-3">
+      {{subtitle}}
+    </div>
+    <br />
+    <app-form (saveEvent)="save()" [formGroup]="formGroup">
+      <div class="form-body">  
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="active" />
+        <input type="hidden" formControlName="idEmpresa" />
+        <input type="hidden" formControlName="permisos" required />
+        <app-text-box 
+          [class]="'col-lg-10 col-md-10 col-sm-10'"
+          [labelName]="'Nombre'"
+          [submitted]="submitted"
+          [controlName]="'nombre'"
+          [form]="formGroup">
+        </app-text-box>
+        <app-text-box 
+         [class]="'col-lg-10 col-md-10 col-sm-10'"
+          [labelName]="'Descripción'"
+          [submitted]="submitted"
+          [controlName]="'descripcion'"
+          [form]="formGroup">
+        </app-text-box>
+        <app-multi-select 
+          [class]="'col-lg-12 col-md-12 col-sm-12'"
+          [placeholderName]= "'Permisos'"
+          [data] ="selPermisos" 
+          [all]="false"       
+          [controlName] = "'permisos'"
+          [form]="formGroup"
+          [submitted]="submitted"
+          (changeData) = "onPermisosChange($event)"
+        ></app-multi-select>
+        <br />
+        <div class="row ml-0 mb-5  ">
+          <button mat-dialog-close="true"   [disabled]="formGroup.invalid"  type="submit" class="btn btn-primary ">{{button}}<i
+              class="material-icons f-right">{{icon}}</i></button>
+          <button mat-dialog-close="true"  class="btn btn-default ml-2 "> Cancelar <i class="material-icons f-right">cancel</i></button>
+        </div>
+      </div>
+    </app-form>
+  </div>
+</div>

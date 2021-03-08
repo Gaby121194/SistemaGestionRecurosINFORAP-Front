@@ -1,0 +1,43 @@
+<div class="w-100 ml-0 bg-white d-block  mb-3 shadow"  style="height: 75px; position: fixed;  right: 0px; z-index: 999;">
+  <div    class="d-flex flex-row text-right float-right mt-1" >
+    <button [disabled]="quantity==0" [routerLink]="['/alertas']"
+    data-toggle="tooltip" data-placement="bottom" title="Ver alertas"
+     class="btn text-warning m-0 pr-0 ">
+      <i class="material-icons lg">notifications</i>
+      <span *ngIf="quantity>0" class="badge badge-info">{{quantity}}</span>
+    </button>
+    <div *ngIf="user" class="mr-3" ngbDropdown>
+      <button class="btn pl-3 btn-transparent" id="ddAccount" ngbDropdownToggle
+        style="display: block !important; justify-items: center !important;">
+        <!-- <i class="material-icons mr-3">account_circle</i> -->
+       
+        <label class="lg w-100  cursor-pointer mt-1 mb-0"  >
+          {{user.apellido}}, {{user.nombre}} 
+        </label>
+        <hr class="m-0">
+        <label class="text-muted sm d-inline w-100 cursor-pointer mt-0"  >
+           {{user.rol.nombre | uppercase }}
+        </label>
+      </button>
+      <div style="width: 200px !important;" class="cursor-pointer" ngbDropdownMenu aria-labelledby="ddAccount">
+        <button class="btn btn-trasnparent bold-hover" (click)="edit()" ngbDropdownItem
+        style="display: flex !important; justify-items: center !important;"
+           ><i
+            class="material-icons mr-3">edit</i>Actualizar datos</button>
+        <button class="btn btn-trasnparent bold-hover" (click)="logout()" ngbDropdownItem
+        style="display: flex !important; justify-items: center !important;"
+          ><i
+            class="material-icons mr-3">exit_to_app</i>Cerrar Sesion</button>
+      </div>            
+    </div>
+    <div class="position-relative mr-3">
+      <img *ngIf="canEditCompany" class="cursor-pointer logo-company" src="{{user.empresa.logo}}" (click)="editCompany()"  ngbPopover="Editar Empresa"
+      triggers="mouseenter:mouseleave" popoverClass="bg-white"/>
+      <img *ngIf="!canEditCompany" class="logo-company" src="{{user.empresa.logo}}"  />
+    </div>
+    <!-- <button class="btn btn-trasnparent mr-3"
+     aria-label="Cerrar sesión" 
+     data-toggle="tooltip" data-placement="top" title="Cerrar sesión"
+    ><i class="material-icons">exit_to_app</i></button> -->
+  </div>
+</div>

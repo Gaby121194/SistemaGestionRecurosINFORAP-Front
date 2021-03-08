@@ -1,0 +1,125 @@
+<div class="mb-3">
+    <div class="card" [class.spinner]="isLoading">
+        <div class="card-body ">
+            <div class="row pl-3 pt-3">
+                <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div id="filters" class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <app-datepicker [labelName]="'Fecha de inicio desde'" [submitted]="submitted"
+                                [controlName]="'fechaInicioFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup">
+                            </app-datepicker>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                            <app-datepicker [labelName]="'Fecha de inicio hasta'" [submitted]="submitted"
+                                [controlName]="'fechaInicioTo'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup">
+                            </app-datepicker>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+                    <div class="d-flex">
+
+                        <button (click)="onSearch()" style="min-width: 0;" ngbPopover="Aplicar filtros"
+                            triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                            class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+
+                            <i class="material-icons ">filter_alt</i>
+                        </button>
+                        <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros"
+                            triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                            <i class="material-icons">delete_sweep</i></button>
+
+                            <button (click)="exportPDF()" class="btn btn-dark mt-3 mr-3 d-flex" ngbPopover="Exportar a PDF"
+                            [disabled]="formGroup?.invalid"
+                            triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                            <i class="material-icons">save</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mb-3">
+    <div class="col-lg-6">
+        <div class="card p-3" [class.spinner]="isLoading">
+            <div class="row mb-3">
+                <div *ngIf="!isLoading && !barCharData" class="col-lg-6">
+                    <label class="bold">Recursos humanos / mes</label>
+                </div>
+                <div class="col-lg-6">
+
+                    <app-autocomplete [placeholderName]="'Seleccione ...'" [class]="'col-lg-12 col-md-12 col-sm-12 f-right'"
+                        [data]="services" [labelName]="'Servicio'" [submitted]="submitted" [controlName]="'idServicio'"
+                        (changeData)="onServiceChange($event)"
+                        [form]="formGroup">
+                    </app-autocomplete>
+
+                    <!-- <select style="float: right;">
+                        <option>Seleccione servicio</option>
+                    </select> -->
+                </div>
+            </div>
+            <ng-container *ngIf="!isLoading && barCharData; else nothingToSeeTemplate">
+                <lbd-bar #barResources [title]="'Recursos humanos / mes'" [chartData]="barCharData" [chartOptions]="barCharOptions"></lbd-bar>
+                
+            </ng-container>
+           
+            
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card p-3" [class.spinner]="isLoading">
+            <div class="row mb-3">
+                <div *ngIf="!isLoading && !lineChartData" class="col-lg-8">
+                    <label class="bold">Servicios activos último periodo</label>
+                </div>
+               
+            </div>
+            <ng-container *ngIf="!isLoading && lineChartData; else nothingToSeeTemplate">
+                <lbd-line #lineActives [title]="'Servicios activos último periodo'" [chartData]="lineChartData" [labels]="lineChartLabels" [chartOptions]="lineChartOptions">
+                </lbd-line>
+                
+            </ng-container>
+         
+        </div>
+    </div>
+    <div class="col-lg-6 mt-3">
+        <div class="card p-3" [class.spinner]="isLoading">
+            
+            <div *ngIf="!isLoading && !pieChartData" class="row mb-3">
+                <div class="col-lg-8">
+                    <label class="bold">Servicios activos/finalizados</label>
+                </div>
+            </div>
+ 
+            <ng-container *ngIf="!isLoading && pieChartData; else nothingToSeeTemplate">        
+                <lbd-pie #pieActives [title]="'Servicios activos/finalizados'" [chartData]="pieChartData" [labels]="pieChartLabels" [chartOptions]="pieChartOptions">
+                </lbd-pie>               
+            </ng-container>
+
+        </div>
+    </div>
+    <div class="col-lg-6 mt-3">
+        <div class="card p-3">
+            <div *ngIf="!isLoading && !pieChartData2" class="row mb-3">
+                <div class="col-lg-8">
+                    <label class="bold">Servicios finalizados</label>
+                </div>
+
+            </div>
+            <ng-container *ngIf="!isLoading && pieChartData2; else nothingToSeeTemplate">        
+                <lbd-pie #pieEnded [title]="'Servicios finalizados'" [chartData]="pieChartData2" [labels]="pieChartLabels2" [chartOptions]="pieChartOptions2">
+                </lbd-pie>                
+            </ng-container>
+        </div>
+    </div>
+</div>
+<ng-template #nothingToSeeTemplate>
+    <div class="alert alert-info" role="alert">
+        No se encontraron resultados para mostrar
+      </div>
+</ng-template>

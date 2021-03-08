@@ -1,0 +1,143 @@
+
+<perfect-scrollbar>
+<div class="card-body"  style=" margin-right: 10%; margin-left: 10%;">
+    <div class=" mt-2">
+      <h2 class="title row ">{{title}}</h2>
+      <div class=" pl-1">{{subtitle}}</div>
+      <br />
+      <app-form (saveEvent)="save()" [formGroup]="formGroup">
+        <div class="form-body">  
+            <input type="hidden" formControlName="id" />
+          <div class="row">
+            <div class="col-6">
+              <app-text-box 
+                  [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [labelName]="'Razón Social'"
+                  [submitted]="submitted"
+                  [controlName]="'razonSocial'"
+                  [form]="formGroup">
+                </app-text-box>
+            </div>
+            <div class="col-6">
+              <app-text-box  
+                [class]="'col-lg-10 col-md-10 col-sm-10'"
+                [labelName]="'Domicilio'"
+                [submitted]="submitted"
+                [controlName]="'domicilio'"
+                [form]="formGroup">
+              </app-text-box>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <app-text-box 
+                [class]="'col-lg-10 col-md-10 col-sm-10'"
+                [labelName]="'CUIT'"
+                [submitted]="submitted"
+                [controlName]="'cuit'"
+                [errorPattern]= "'Solo debe contener números y comenzar con 20, 23, 27, 30 o 33'"
+                [form]="formGroup">
+              </app-text-box>
+            </div>
+            <div class="col-6">
+            <app-text-box 
+              [class]="'col-lg-10 col-md-10 col-sm-10'"
+              [labelName]="'Teléfono'"
+              [submitted]="submitted"
+              [errorPattern]="'El valor ingresado no es un valor numérico válido'"
+              [controlName]="'telefono'"
+              [form]="formGroup">
+            </app-text-box>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <app-text-box 
+                [class]="'col-lg-10 col-md-10 col-sm-10'"
+                [labelName]="'Email contacto'"
+                [submitted]="submitted"
+                [controlName]="'correoContacto'"
+                [form]="formGroup">
+              </app-text-box>
+            </div>
+            <div class="col-6">
+              <app-text-box 
+                [class]="'col-lg-10 col-md-10 col-sm-10'"
+                [labelName]="'Nombre contacto'"
+                [submitted]="submitted"
+                [controlName]="'usuarioContacto'"
+                [form]="formGroup">
+              </app-text-box>
+            </div>
+          </div>
+          <div *ngIf="!metodo">
+            <hr>
+            <h5 style="margin-top: 10px;"> 
+              Ingrese la información del Administrador: 
+            </h5>
+            <div class="row">
+              <div class="col-6">
+                <app-text-box 
+                  [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [labelName]="'Nombre'"
+                  [submitted]="submitted"
+                  [errorPattern]="'El valor ingresado no es un valor alfabético válido'"
+                  [controlName]="'nombreManager'"
+                  [form]="formGroup">
+                </app-text-box>
+              </div>
+              <div class="col-6">
+                <app-text-box 
+                  [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [labelName]="'Apellido'"
+                  [submitted]="submitted"
+                  [errorPattern]="'El valor ingresado no es un valor alfabético válido'"
+                  [controlName]="'apellidoManager'"
+                  [form]="formGroup">
+                </app-text-box>
+              </div>
+              <div class="col-6">
+                <app-text-box 
+                  [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [labelName]="'Email'"
+                  [submitted]="submitted"
+                  [controlName]="'emailManager'"
+                  [form]="formGroup">
+                </app-text-box>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-6">
+              <h5 style="margin-top: 10px;"> 
+                Seleccione logo: 
+              </h5> 
+              <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+              <mat-progress-bar class="mt-2" mode="determinate" [value]="uploadPercent | async"></mat-progress-bar>
+              <div class="mt-2">
+               {{porcentaje}}
+               <div *ngIf="finalizando">
+                 Espere...
+               </div>
+               <div *ngIf="completado">
+                  Espere...Listo!
+               </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <img class="img-circle" style="margin-left: 30%;" [src]="logo" width="150" height="150"/>
+            </div>
+          </div>
+          <br />
+          <div class="pl-1">
+            <button  mat-dialog-close="true" [disabled]="formGroup.invalid" type="submit" class="btn btn-primary mr-2">{{button}}
+              <i class="material-icons f-right">{{icon}}</i>
+            </button>
+            <button mat-dialog-close="true"  class="btn btn-default" > Cancelar <i class="material-icons f-right">cancel</i></button>
+          </div>
+        </div>
+      </app-form>
+    </div>
+  </div>
+</perfect-scrollbar>

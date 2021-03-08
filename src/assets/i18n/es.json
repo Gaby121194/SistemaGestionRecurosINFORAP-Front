@@ -1,0 +1,147 @@
+{
+  "dateType": {
+    "date": "Fecha",
+    "successfullUpdateMessage": "El Tipo de fecha ha sido actualizado con éxito",
+    "successfullCreateMessage": "El Tipo de fecha se ha creado con éxito",
+    "atLeast14Values": "Se deben ingresar al menos 14 plazos",
+    "error": {
+      "DateMustBeLowerOrEqual": "La fecha ingresada debe ser menor o igual a la actual",
+      "DateAlreadyExist": "La fecha seleccionada ya fue ingresada anteriormente",
+      "CantBeLowerThanOldest": "La fecha seleccionada no puede ser menor a la mas antigua"
+    }
+  },
+  "buttons": {
+    "createUser": "Crear usuario",
+    "createClient": "Crear cliente",
+    "createOrder": "Crear pedido",
+    "createInstrument": "Crear instrumento",
+    "uploadFiles": "Subir archivos",
+    "addPayment": "Agregar pago",
+    "createDateType": "Crear tipo por fecha",
+    "addAnalyst": "Agregar Analista",
+    "addProductType": "Agregar Producto",
+    "edit": "Editar",
+    "modify": "Modificar",
+    "delete": "Eliminar",
+    "access": "Acceder",
+    "view": "Consultar",
+    "save": "Guardar",
+    "search": "Buscar",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "yes": "Si",
+    "no": "No",
+    "changePassword": "Cambiar contraseña",
+    "createBeta": "Crear beta",
+    "accept": "Aceptar",
+    "next": "Seguiente",
+    "finalize": "Finalizar",
+    "finish": "Finalizar"
+  },
+  "grid": {
+    "paginator": {
+      "ITEMS_PER_PAGE_LABEL": "Items per page:",
+      "NEXT_PAGE_LABEL": "Next page",
+      "PREVIOUS_PAGE_LABEL": "Previous page",
+      "FIRST_PAGE_LABEL": "First page",
+      "LAST_PAGE_LABEL": "Last page",
+      "RANGE_PAGE_LABEL_1": "0 of {{length}}",
+      "RANGE_PAGE_LABEL_2": "{{startIndex}} - {{endIndex}} of {{length}}"
+    },
+    "filter": "Buscar"
+  },
+  "session": {
+    "myAccount": "Mis datos",
+    "myProfile": "Mi Perfil",
+    "changeProfile": "Cambiar perfil",
+    "logout": "Cerrar Sesión"
+  },
+  "deleteConfirmMessage": "¿Está seguro que desea eliminar este registro?",
+  "changePasswordConfirmMessage": "¿Está seguro que desea cambiar su contraseña?",
+  "sendMailPasswordConfirmMessage": "Se le ha enviado un correo para cambiar su contraseña",
+  "saveErrorMessage": "Se ha producido un error en la actualización de datos.",
+  "saveSuccessfullMessage": "Los cambios han sido guardados con éxito",
+  "errorMessages": {
+    "rangedate": "La fecha de inicio debe ser menor a la fecha de fin",
+    "matDatepickerParse": "Formato de fecha inválido",
+    "dateValidator": "Formato de fecha inválido",
+    "emailAlreadyExist": "El email ingresado ya existe en nuestros registros",
+    "required": "Este campo es obligatorio",
+    "existent": "{{field}} ya registrada",
+    "AnalystExist": "El analista seleccionado ya fue agregado previamente",
+    "email": "Ingresar una dirección de email válida",
+    "number": "Formato de número inválido",
+    "invalid": "Seleccionar una opción válida",
+    "atLeastOneCheckboxChecked": "Seleccionar al menos una opción",
+    "pattern": "Formato inválido",
+    "DateDoesntHaveBetaType": "La Beta del instrumento no tiene calculadas sus series para la fecha seleccionada.",
+    "atLeastOneFloatingPaymentRow": "Ingresar al menos un registro."
+  },
+  "lists": {
+    "profiles": {
+      "administrator": "Administrador",
+      "analyst": "Analista",
+      "client": "Cliente"
+    },
+    "languages": {
+      "spanish": "Español",
+      "english": "Inglés"
+    },
+    "orderStatus": {
+      "initiated": "Iniciado",
+      "inProgress": "En Proceso",
+      "finalized": "Finalizado"
+    },
+    "userStatus": {
+      "pending": "Pendiente",
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "assessmentStatus": {
+      "notVisible": "No Visible",
+      "inProcess": "En Proceso",
+      "approved": "Aprobada",
+      "finished": "Finalizada"
+    },
+    "orderFrecuencies": {
+      "daily": "Diaria",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "biannual": "Semestral",
+      "annual": "Anual",
+      "irregular": "Irregular"
+    },
+    "currencies": {
+      "eur": "Euro",
+      "usd": "Dolar"
+    },
+    "instrumentFrecuencies": {
+      "daily": "Diaria",
+      "weekly": "Semanal",
+      "monthly": "Mensual"
+    },
+    "instrumentPeriodicity": {
+      "daily": "Diaria",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "biannual": "Semestral",
+      "annual": "Anual",
+      "irregular": "Irregular",
+      "2years": "2 Años"
+    },
+    "instrumentPaymentFrequency": {
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "fourMonths": "Cuatrimestral",
+      "annual": "Anual"
+    },
+    "instrumentReferenceFrequency": {
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "biannual": "Semestral",
+      "annual": "Anual"
+    }
+  }
+}

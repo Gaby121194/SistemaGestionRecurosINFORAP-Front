@@ -1,0 +1,73 @@
+<app-basic-list 
+  [title]="'Backups'"  
+  [showSearch]="false"
+  >
+  <div class="list-body" style="min-height: 400px">
+    <div class="card mr-3">
+      <div class="card-body">
+        <div class="row pl-3 pt-3">
+          <div class="col-lg-9 col-md-9 col-sm-8">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Creados desde'" [hasError]="hasErrors" [submitted]="submitted" [controlName]="'creationDateFrom'"
+                  [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Creados hasta'" [hasError]="hasErrors" [submitted]="submitted" [controlName]="'creationDateTo'"
+                  [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker> 
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+            <div class="row">
+              <button (click)="onSearch()" style="min-width: 0;"
+              ngbPopover="Aplicar filtros" triggers="mouseenter:mouseleave" popoverClass="bg-white"
+               class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+                <i class="material-icons ">filter_alt</i>                
+              </button>
+              <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="material-icons">delete_sweep</i>
+              </button>
+              <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green" ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+              </button>
+
+            </div>  
+          </div> 
+        </div>
+      </div>
+    </div>
+    <table class="table  mr-3 w-100   p-0">
+      <thead>
+        <tr>
+          <th>Fecha de creación</th>
+          <th>Hora de creación</th>
+          <th>Nombre de archivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="position: relative;" *ngFor="let item of backupList  | paginate: { itemsPerPage: 10, currentPage: page }; index as i">
+            <td>
+                {{item.creationDate | date: "dd/MM/yyyy HH:mm"}}
+            </td>
+            <td>
+              {{item.creationDate | date: "HH:mm"}}
+          </td>
+            <td>
+                {{item.name}}
+            </td>            
+          <td>
+            <div class="row">
+              <button (click)="restore(item.id)" ngbPopover="Restaurar" triggers="mouseenter:mouseleave" popoverClass="bg-white"  class="btn btn-sm btn-warning"><i class="material-icons">restore</i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: center;">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</app-basic-list>

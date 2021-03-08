@@ -1,0 +1,85 @@
+<app-basic-list [title]="'Recursos'" class="mr-0 pr-0" [showSearch]="false">
+  <div class="list-body">
+    <div class="card ">
+      <div class="card-body ">
+        <div class="row pl-3 pt-3">
+          <div class="col-lg-8 col-md-8 col-sm-6">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="tiposRecursos"
+                  [labelName]="'Tipo de recurso'" [submitted]="submitted" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [controlName]="'idTipoRecurso'" [form]="formGroup"></app-drop-down-menu>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Fecha de asignación desde'" [submitted]="submitted" [hasError]="hasErrors"
+                  [controlName]="'creationDateFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Fecha de asignación hasta'" [submitted]="submitted" [hasError]="hasErrors"
+                  [controlName]="'creationDateTo'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 text-right">
+            <div class="d-flex float-right">
+              <button (click)="onSearch()" style="min-width: 0;" ngbPopover="Aplicar filtros"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                class="btn btn-secundary mt-3  mr-3 d-flex j-center">
+                <i class="material-icons ">filter_alt</i>
+              </button>
+              <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex j-center" ngbPopover="Limpiar filtros"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="material-icons">delete_sweep</i></button>
+              <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+              </button>
+              <button (click)="onCreate()" ngbPopover="Agregar recurso" triggers="mouseenter:mouseleave"
+                popoverClass="bg-white" class="btn btn-primary mt-3 mr-3 j-center d-flex">
+                <i class="material-icons">note_add</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table  mr-3 w-100   p-0">
+      <thead>
+        <tr>
+          <th>Fecha de asignación</th>
+          <!-- <th>ID</th> -->
+          <th>Descripción</th>
+          <th>Tipo de Recurso</th>
+          <!-- <th>Ubicación</th> -->
+          <!-- <th>Estado</th> -->
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="position: relative;" *ngFor="let item of recursoServicios; index as i">
+          <td>
+            {{item.fechaAsignado | date : 'dd-MM-yyyy'}}
+          </td>
+          <td>
+            {{item.recurso.descripcion}}
+          </td>
+          <td>
+            {{item.tipoRecurso.descripcion}}
+          </td>
+          <td>
+            <button style="margin-right:5px;" (click)="delete(item.id)" class="btn btn-sm btn-danger"><i
+                class="material-icons">delete</i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: center;">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</app-basic-list>

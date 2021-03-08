@@ -1,0 +1,20 @@
+<mat-sidenav-container class="example-container pb-0" style="min-height: 100vh; height: 100%; position: relative;">
+  <mat-sidenav style=" overflow-y: hidden !important" class="" opened mode="side">
+    <div class=" text-center bg-white d-block mt-0 mat-sidenav-brand pt-2 " >
+      <img  class=" d-inline mb-2  " src="assets/images/inforap-logo-mini.png" width="60px" height="60px"/> 
+      <h4 class="title ml-3 d-inline text-dark  ">Inforap!</h4>     
+    </div>
+        <mat-action-list    style="justify-content: center;" *ngFor="let item of menuUser" >
+            <button  mat-list-item class="text-white"
+            [routerLinkActive]="['link-active']"
+             routerLink="/{{item.url}}" ><mat-icon matListIcon class="material-icons lg"> {{item.icon}} </mat-icon> 
+              <span class="ml-3">{{item.name}}  </span> </button>
+        </mat-action-list>
+      
+        
+  </mat-sidenav>
+  <ng-content select="#main"></ng-content>  
+</mat-sidenav-container>
+<style>
+ 
+</style>

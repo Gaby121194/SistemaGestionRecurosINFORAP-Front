@@ -1,0 +1,28 @@
+<div class="mb-3 w-100 ">
+  <div class="row ml-0 position-relative">
+    <div class="text-box p-0 {{class}}" [ngClass]="{'text-box-error': hasError && isSubmitted}">
+      <label class="text-muted-sm mb-0 mt-0 ml-3 " style="width: 100%;">
+        {{required?labelName+' *':labelName}}
+      </label>
+      <div class="position-relative cursor-pointer">
+        <div *ngIf="data" ngbDropdown>
+          <div class="w-100 ml-3 pr-3" id="dropdownMenuButton" ngbDropdownToggle>
+            <span> Seleccione </span>
+            <i class="material-icons " style="float: right;">keyboard_arrow_down</i>
+          </div>
+          <div ngbDropdownMenu class="cursor-pointer pl-3 mt-3 w-100  ">
+            <div *ngIf="all">
+              <mat-checkbox [checked]="clickAllValue" (change)="clickAll()">Todos</mat-checkbox>
+              <div class="dropdown-divider"></div>
+            </div>
+            <section class="">
+              <mat-checkbox class="d-block" *ngFor="let item of innerData;index as i" (change)="onChange($event)"
+                [(ngModel)]="item.checked">{{item.value}} </mat-checkbox>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="hasError && isSubmitted" class="cursor-pointer icons error bg-red text-box-icon-error " ngbPopover="Este campo es requerido" triggers="mouseenter:mouseleave" popoverClass="pop-hover-danger"></div>
+  </div>
+</div>

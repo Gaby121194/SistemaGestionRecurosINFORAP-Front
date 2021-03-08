@@ -1,0 +1,207 @@
+<div class="card-body" style="margin-left: 0 !important;">
+    <div class="row pl-0 ml-0  ">
+        <h4 class="title" style="text-align: right!important;">Asignar requisito</h4>
+    </div>
+    <div class="row pl-0 ml-0">
+
+
+        <div class="pl-0 col-lg-3 col-md-3 col-sm-3 ">
+            <ul class="sidebar-list">
+                <li *ngFor="let item of typeRules;index as i" [ngClass]="{'active': item.active == true}"
+                    (click)=" showFormForRule(i)">
+                    {{item.descripcion}}</li>
+            </ul>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <div class="">
+                <ng-container *ngIf="activeForm==0">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Descripción'" [submitted]="submitted"
+                                [controlName]="'descripcion'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup[0]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="typeRequisites"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Tipo de requisito'"
+                                [submitted]="submitted" [controlName]="'idTipoRequisito'" [form]="formGroup[0]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMixed"
+                                [labelName]="'A los recursos...'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial1'" [form]="formGroup[0]">
+                            </app-autocomplete>
+                        </div>
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMaterial"
+                                [labelName]="'Se le debe asignar'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial2'" [form]="formGroup[0]">
+                            </app-autocomplete>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Cada...'" [submitted]="submitted" [controlName]="'periodicidad'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup[0]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="uTiempo"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Unidad de tiempo'"
+                                [submitted]="submitted" [controlName]="'idUtiempo'" [form]="formGroup[0]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="activeForm==1">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Descripción'" [submitted]="submitted"
+                                [controlName]="'descripcion'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup[1]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="typeRequisites"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Tipo de requisito'"
+                                [submitted]="submitted" [controlName]="'idTipoRequisito'" [form]="formGroup[1]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMixed"
+                                [labelName]="'Los recursos...'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial1'" [form]="formGroup[1]">
+                            </app-autocomplete>
+                        </div>
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesRenewable"
+                                [labelName]="'Deben tener asignado y vigente:'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoRenovable'" [form]="formGroup[1]">
+                            </app-autocomplete>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="activeForm==2">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Descripción'" [submitted]="submitted"
+                                [controlName]="'descripcion'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup[2]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="typeRequisites"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Tipo de requisito'"
+                                [submitted]="submitted" [controlName]="'idTipoRequisito'" [form]="formGroup[2]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMixed"
+                                [labelName]="'Los recursos...'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial1'" [form]="formGroup[2]">
+                            </app-autocomplete>
+                        </div>
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMaterial"
+                                [labelName]="'Deben tener asignado'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial2'" [form]="formGroup[2]">
+                            </app-autocomplete>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="activeForm==3">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Descripción'" [submitted]="submitted"
+                                [controlName]="'descripcion'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup[3]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="typeRequisites"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Tipo de requisito'"
+                                [submitted]="submitted" [controlName]="'idTipoRequisito'" [form]="formGroup[3]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMaterial"
+                                [labelName]="'El recurso...'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial1'" [form]="formGroup[3]">
+                            </app-autocomplete>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Debe tener un ciclo de vida superior a...'"
+                                [submitted]="submitted" [controlName]="'periodicidad'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup[3]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="uTiempo"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Unidad de tiempo'"
+                                [submitted]="submitted" [controlName]="'idUtiempo'" [form]="formGroup[3]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="activeForm==4">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'Descripción'" [submitted]="submitted"
+                                [controlName]="'descripcion'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                [form]="formGroup[4]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="typeRequisites"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Tipo de requisito'"
+                                [submitted]="submitted" [controlName]="'idTipoRequisito'" [form]="formGroup[4]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <app-autocomplete [placeholderName]="'Seleccione ...'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [data]="resourcesTypesMixed"
+                                [labelName]="'El recurso...'" [submitted]="submitted"
+                                [controlName]="'IdTipoRecursoMaterial1'" [form]="formGroup[4]">
+                            </app-autocomplete>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <app-text-box [labelName]="'No debe estar fuera de servicio por mas de...'"
+                                [submitted]="submitted" [controlName]="'periodicidad'"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup[4]"></app-text-box>
+                        </div>
+                        <div class="col-lg-4">
+                            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="uTiempo"
+                                [class]="'col-lg-10 col-md-10 col-sm-10'" [labelName]="'Unidad de tiempo'"
+                                [submitted]="submitted" [controlName]="'idUtiempo'" [form]="formGroup[4]">
+                            </app-drop-down-menu>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <button 
+        [disabled]="formGroup[activeForm]?.invalid"
+        (click)="save()" class="btn btn-primary">Guardar</button>
+        <button class="btn btn-default ml-3" (click)="onNoClick()">Cancelar<i class="material-icons f-right">cancel</i></button>
+    </div>
+</div>

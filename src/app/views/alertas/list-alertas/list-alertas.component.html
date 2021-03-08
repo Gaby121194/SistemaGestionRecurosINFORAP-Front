@@ -1,0 +1,54 @@
+<app-basic-list [title]="'Mis alertas'" [showSearch]="true" [searchPlaceholder]="'Buscar por cliente o servicio'" (dataChange)="filter($event)" >
+    <div class="list-body">
+        <div class="row">
+            <div *ngFor="let item of filterAlerts;index as i" class="col-lg-4 col-md-6 col-sm-12 col-12 pb-3">
+                <div class="card">
+                    <div class="card-header pt-1 bg-purple">
+                        <div class="mt-0">
+                            <span class="badge badge-secondary">{{item.servicio.cliente.razonSocial}}</span>
+                        </div>
+                        <div class="j-center">
+                            <small>Servicio:</small>
+                            <p class="p-0 m-0">
+                                <label class="color-white">{{item.servicio.nombre}}</label>
+                            </p>
+                            <button type="button" class="btn btn-sm float-right" (click)="alertas[i].active = !alertas[i].active"
+                                [attr.aria-expanded]="!alertas[i].active" aria-controls="collapseExample">
+                                <i class="material-icons color-white ">keyboard_arrow_down</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0 m-0">
+                        <div id="collapseExample" class="pt-3 pl-3 pr-3 pb-3" [ngbCollapse]="!alertas[i].active">
+
+                            <p class="mb-1"><small class="list-group-item-action">Requisitos incumplidos:</small></p>
+                            <div class="list-group">
+
+                                <div *ngFor="let alerta of item.alertas"
+                                    class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1 ">{{alerta.requisito.descripcion}}</h5>
+                                    </div>
+                                    <p class="mb-1">{{alerta.requisito.transcripcionRegla}}</p>
+                                    <small (click)="alerta.active = !alerta.active"
+                                        [attr.aria-expanded]="!alerta.active"
+                                        class="cursor-pointer"
+                                        aria-controls="collapseExampleDetails">Ver recursos</small>
+                                    <div id="collapseExampleDetails" [ngbCollapse]="!alerta.active">
+                                        <div *ngIf="alerta.recursos" class="list-group">
+                                            <a *ngFor="let recurso of alerta.recursos" href="#"
+                                                class="list-group-item list-group-item-action">
+                                                {{recurso.descripcion}} <br />  <small>Fecha: {{recurso.creationDate | date : 'dd-MM-yyyy'}}</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</app-basic-list>

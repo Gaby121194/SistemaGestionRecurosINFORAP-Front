@@ -1,0 +1,26 @@
+<h4 class="title row ">{{title}}</h4>
+<app-form (saveEvent)="save()" [formGroup]="formGroup">
+    <div class="form-body">
+        <!-- <input type="hidden" formControlName="id" /> -->
+        <!-- <input type="hidden" formControlName="idEmpresa" /> -->
+        <div>
+            <app-drop-down-menu [placeholderName]="'Seleccione ...'" [data]="motivoBaja"
+                [labelName]="'Motivo de la baja del servicio'" [submitted]="submitted"
+                [controlName]="'idMotivoBajaServicio'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+            </app-drop-down-menu>
+            <app-text-box [labelName]="'Aclaración'" [submitted]="submitted" [controlName]="'observaciones'"
+                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+            </app-text-box>
+
+            <br />
+            <div class="row ml-0 mb-5  ">
+                <div class="ml-0 pl-0 col-lg-10 col-md-10 col-sm-9">
+                    <button type="submit" class="btn btn-danger  ">{{btn}}<i
+                            class="material-icons f-right">{{icon}}</i></button>
+                    <button type="reset" class="btn btn-default col-3 ml-2" (click)="onNoClick()">Cancelar<i class="material-icons f-right">cancel</i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</app-form>

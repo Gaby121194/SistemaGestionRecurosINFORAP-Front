@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="171" height="171" viewBox="0 0 171 171">
+    <defs>
+        <path id="prefix__a" d="M3.465 0h105.289c1.913 0 3.465 1.551 3.465 3.465v67.17c0 1.914-1.552 3.465-3.465 3.465H20.907c-.613 0-1.2.243-1.634.677l-15.33 15.33c-.902.902-2.364.902-3.266 0C.243 89.673 0 89.086 0 88.473V3.465C0 1.551 1.551 0 3.465 0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(-4.933 21.375) translate(54.808)">
+            <mask id="prefix__b" fill="#fff">
+                <use xlink:href="#prefix__a"/>
+            </mask>
+            <use fill="#DBE2F4" transform="matrix(-1 0 0 1 112.219 0)" xlink:href="#prefix__a"/>
+            <circle cx="5.344" cy="76.594" r="44.531" fill="#617ABD" fill-opacity=".2" mask="url(#prefix__b)"/>
+            <path fill="#29347B" fill-rule="nonzero" d="M98.761 46.312V51.3H38.848v-4.988H98.76zm0-12.468v4.987H14.25v-4.987h84.511zm0-12.469v4.987H14.25v-4.987h84.511z" mask="url(#prefix__b)" transform="matrix(-1 0 0 1 113.011 0)"/>
+        </g>
+        <g>
+            <path fill="#87D3E1" d="M37.406 0C16.747 0 0 16.747 0 37.406c0 20.66 16.747 37.407 37.406 37.407 20.66 0 37.407-16.748 37.407-37.407C74.813 16.747 58.064 0 37.406 0z" transform="translate(-4.933 21.375) rotate(-45 97.126 38.018)"/>
+            <path fill="#29BDC1" fill-rule="nonzero" d="M37.406 0C16.747 0 0 16.747 0 37.406c0 20.66 16.747 37.407 37.406 37.407 20.66 0 37.407-16.748 37.407-37.407C74.813 16.747 58.064 0 37.406 0zm0 7.125c16.724 0 30.282 13.557 30.282 30.281 0 16.724-13.558 30.282-30.282 30.282S7.125 54.13 7.125 37.406 20.682 7.125 37.406 7.125z" transform="translate(-4.933 21.375) rotate(-45 97.126 38.018)"/>
+            <path fill="#FFF" fill-rule="nonzero" d="M37.406 12.469v7.125c-9.578 0-17.391 7.56-17.796 17.04l-.016.772h-7.125c0-13.485 10.704-24.47 24.08-24.923l.857-.014z" transform="translate(-4.933 21.375) rotate(-45 97.126 38.018)"/>
+            <path fill="#29BDC1" fill-rule="nonzero" d="M39.188 67.688l-.001 12.468 1.782 1.781v35.626h-7.125V81.936l1.78-1.781.001-12.469h3.563z" transform="translate(-4.933 21.375) rotate(-45 97.126 38.018)"/>
+        </g>
+    </g>
+</svg>

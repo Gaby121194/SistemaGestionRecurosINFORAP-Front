@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="246px" height="246px" viewBox="0 0 246 246" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 64 (101010) - https://sketch.com -->
+    <title>538EF140-3962-4962-8A1F-175DF72EE5D8</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-0.9%" y="-1.5%" width="101.8%" height="103.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M1.5,0 L67.4134615,0 L67.4134615,0 L95.7980769,28.3846154 L95.7980769,122.682692 C95.7980769,123.511119 95.126504,124.182692 94.2980769,124.182692 L1.5,124.182692 C0.671572875,124.182692 1.01453063e-16,123.511119 0,122.682692 L0,1.5 C-1.01453063e-16,0.671572875 0.671572875,1.52179594e-16 1.5,0 Z" id="path-2"></path>
+    </defs>
+    <g id="⬆️✅-Cuenta" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Upload-photo-1" transform="translate(-598.000000, -273.000000)">
+            <g id="04-Template/User/04-Upload-photo">
+                <g id="04-Template/Modal/Upload" filter="url(#filter-1)">
+                    <g id="03-Module/Upload/Zero-case" transform="translate(568.000000, 183.000000)">
+                        <g id="01-Fragment/Illustration/Upload" transform="translate(30.000000, 90.000000)">
+                            <g id="Group-Copy-2" transform="translate(89.884615, 37.846154)">
+                                <mask id="mask-3" fill="white">
+                                    <use xlink:href="#path-2"></use>
+                                </mask>
+                                <use id="Rectangle" fill="#F4F5F7" xlink:href="#path-2"></use>
+                                <polygon id="Line-6" fill="#C1C7D0" fill-rule="nonzero" mask="url(#mask-3)" points="79.2403846 39.0288462 79.2403846 43.7596154 15.375 43.7596154 15.375 39.0288462"></polygon>
+                                <polygon id="Line-6-Copy" fill="#C1C7D0" fill-rule="nonzero" mask="url(#mask-3)" points="79.2403846 53.2211538 79.2403846 57.9519231 15.375 57.9519231 15.375 53.2211538"></polygon>
+                                <polygon id="Line-6-Copy-3" fill="#C1C7D0" fill-rule="nonzero" mask="url(#mask-3)" points="60.681213 81.6057692 60.681213 86.3365385 15.0110947 86.3365385 15.0110947 81.6057692"></polygon>
+                                <polygon id="Line-6-Copy-2" fill="#C1C7D0" fill-rule="nonzero" mask="url(#mask-3)" points="79.2403846 67.4134615 79.2403846 72.1442308 15.375 72.1442308 15.375 67.4134615"></polygon>
+                                <circle id="Oval" fill="#C1C7D0" opacity="0.2" mask="url(#mask-3)" cx="9.46153846" cy="127.730769" r="49.6730769"></circle>
+                                <path d="M67.4134615,0 L67.4134615,26.8846154 C67.4134615,27.7130425 68.0850344,28.3846154 68.9134615,28.3846154 L95.7980769,28.3846154 L95.7980769,28.3846154 L67.4134615,0 Z" id="Path-2" fill="#C1C7D0" mask="url(#mask-3)"></path>
+                                <polygon id="Path-2-Copy" fill="#C1C7D0" opacity="0.2" mask="url(#mask-3)" transform="translate(83.379808, 40.802885) scale(-1, -1) translate(-83.379808, -40.802885) " points="70.9615385 28.3846154 70.9615385 53.2211538 95.7980769 53.2211538"></polygon>
+                            </g>
+                            <circle id="Oval" fill="#00A3A1" cx="89.8846154" cy="156.115385" r="49.6730769"></circle>
+                            <path d="M109.635577,151.479231 C108.027115,143.318654 100.86,137.192308 92.25,137.192308 C85.4140385,137.192308 79.4769231,141.071538 76.5201923,146.748462 C69.4003846,147.505385 63.8653846,153.537115 63.8653846,160.846154 C63.8653846,168.675577 70.2282692,175.038462 78.0576923,175.038462 L108.807692,175.038462 C115.336154,175.038462 120.634615,169.74 120.634615,163.211538 C120.634615,156.966923 115.785577,151.905 109.635577,151.479231 Z" id="Path" fill-opacity="0.5" fill="#057573"></path>
+                            <path d="M107.270192,149.113846 C105.661731,140.953269 98.4946154,134.826923 89.8846154,134.826923 C83.0486538,134.826923 77.1115385,138.706154 74.1548077,144.383077 C67.035,145.14 61.5,151.171731 61.5,158.480769 C61.5,166.310192 67.8628846,172.673077 75.6923077,172.673077 L106.442308,172.673077 C112.970769,172.673077 118.269231,167.374615 118.269231,160.846154 C118.269231,154.601538 113.420192,149.539615 107.270192,149.113846 Z M80.4230769,156.115385 L86.4548077,156.115385 L86.4548077,163.211538 L93.3144231,163.211538 L93.3144231,156.115385 L99.3461538,156.115385 L89.8846154,146.653846 L80.4230769,156.115385 Z" id="Shape-Copy" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

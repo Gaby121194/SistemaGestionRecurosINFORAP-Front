@@ -1,0 +1,56 @@
+<app-card>
+    <div class="card-body" style="margin-right: 24px !important ;">
+        <div class= "mt-2">
+            <h2 style="font-size: 20pt; font-weight: bold;">{{title}}</h2>
+            <div class="row lg-col-6">
+
+                <div class="col-lg-6">
+                    <dl style="font-size: 18pt;">
+                        <dt>
+                            <img class="img-circle" src="{{item.imagen}}" width="280" height="280">
+                        </dt>
+                        <br>
+                        <br>
+                        <dt>Apellido, nombre</dt>
+                        <dl>{{item.apellido}}, {{item.nombre}} </dl>
+                      
+                    </dl>
+                </div>
+
+                <div class="col-lg-6">
+                    <dl style="font-size: 12pt;">
+                        <dt>Multiservicio</dt>
+                        <dl>{{item.multiservicio? 'Sí' : 'No'}}</dl>
+
+                        <dt>CUIL</dt>
+                        <dl>{{item.cuil}}</dl>
+                      
+                        <dt>Teléfono</dt>
+                        <dl>{{item.telefono}}</dl>
+                        
+                        <dt>Email</dt>
+                        <dl>{{item.email}}</dl>
+
+                        <dt>Número de Legajo</dt>
+                        <dl>{{item.nroLegajo}}</dl>
+
+                        <dt>Dirección</dt>
+                        <dl>{{item.direccion}}</dl>
+
+                        <dt>Fecha de nacimiento</dt>
+                        <dl>{{item.creationDate | date: 'dd/MM/yyy'}}</dl>
+                        <dl >
+                            <button mat-dialog-close="true" class="btn btn-default j-center d-flex float-lg-right m-lg-2 mt-3" > Cerrar <i
+                            class="material-icons ml-3">cancel</i></button>
+
+                        </dl>
+                        
+                    </dl>   
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</app-card>

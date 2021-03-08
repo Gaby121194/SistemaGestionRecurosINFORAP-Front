@@ -1,0 +1,25 @@
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: #263040;
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #6c757d !important;
+}
+
+// .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+//     // border-color :#0277ff;
+//     border-color: #263040 !important;
+//   }
+
+//   .mat-radio-button.mat-accent .mat-radio-inner-circle {
+//     color: #263040 !important;
+//     background-color: #263040 !important;
+//     // color: #0277ff;
+//     // background-color: rgb(66, 134, 244);
+//   }
+
+//   .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+//     //   background-color:rgba(66, 134, 244,.26)
+
+//     // border-color: #e9edef;
+//     border-color: #e9edef !important;
+//   }

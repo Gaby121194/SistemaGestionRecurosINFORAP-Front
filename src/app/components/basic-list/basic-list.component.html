@@ -1,0 +1,19 @@
+<div class="pl-3 ml-3 mr-5" style="min-height: 80vh;">
+  <div class="row centered ">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h2 class="title">{{title}}</h2>
+      <div class="subtitle mb-3">{{subtitle}} </div>
+    </div>
+    <div class="col-lg-10 col-md-9 col-sm-12">
+      <app-search-text-box *ngIf="showSearch" [placeholderName]="searchPlaceholder" [class]="'w-100'"
+        (dataChange)="applyFilter($event.target.value)" [isMargin]="'false'">
+      </app-search-text-box>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-12 d-flex justify-content-end text-right">      
+        <button *ngIf="showCreate" (click)="onCreate()" class="btn btn-primary d-flex">Crear
+          <i class="material-icons ml-3">note_add</i>
+        </button>     
+    </div>
+  </div>
+  <ng-content select=".list-body"></ng-content>
+</div>

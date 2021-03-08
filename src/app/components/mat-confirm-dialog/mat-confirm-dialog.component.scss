@@ -1,0 +1,33 @@
+
+.mat-dialog-container {
+    border-radius: .25em .25em .4em .4em;
+    padding: 0px;
+}
+
+.content-container{
+    margin: 5px 5px 40px 5px;
+    text-align: center;
+    // padding-bottom: ;
+}
+  
+#no-button{
+    height: 40px;
+    width: 25%;
+    border-radius: 0px;
+    margin-right: 15%;
+}
+  
+#yes-button{
+    height: 40px;
+    width: 25%;
+    background-color: #5d06c1;
+    color:white;
+    border-radius: 0px;
+    margin-left: 20%;
+}
+  
+span.content-span{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}

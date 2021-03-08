@@ -1,0 +1,147 @@
+{
+    "dateType": {
+        "date": "Date",
+        "successfullUpdateMessage": "The Date Type was successfully updated",
+        "successfullCreateMessage": "The Date Type was successfully created",
+        "atLeast14Values": "At least 14 deadlines must be entered",
+        "error": {
+            "DateMustBeLowerOrEqual": "The date entered must be less than or equal to the current date",
+            "DateAlreadyExist": "The selected date has already been entered previously",
+            "CantBeLowerThanOldest": "Cant Be lower than the oldest Date Type"
+        }
+    },
+    "buttons": {
+        "createUser": "Create user",
+        "createClient": "Create client",
+        "createOrder": "Create order",
+        "createInstrument": "Create instrument",
+        "uploadFiles": "Upload files",
+        "addPayment": "Add payment",
+        "createDateType": "Create date yype",
+        "addAnalyst": "Add Analyst",
+        "addProductType": "Add Product",
+        "edit": "Edit",
+        "modify": "Modify",
+        "delete": "Delete",
+        "access": "View",
+        "save": "Save",
+        "search": "Search",
+        "cancel": "Cancel",
+        "back": "Back",
+        "yes": "Yes",
+        "no": "No",
+        "finalize": "Finalize",
+        "changePassword": "Change Password",
+        "createBeta": "Create beta",
+        "accept": "Accept",
+        "view": "View",
+        "next": "Next",
+        "finish": "Finish"
+    },
+    "grid": {
+        "paginator": {
+            "ITEMS_PER_PAGE_LABEL": "Items per page:",
+            "NEXT_PAGE_LABEL": "Next page",
+            "PREVIOUS_PAGE_LABEL": "Previous page",
+            "FIRST_PAGE_LABEL": "First page",
+            "LAST_PAGE_LABEL": "Last page",
+            "RANGE_PAGE_LABEL_1": "0 of {{length}}",
+            "RANGE_PAGE_LABEL_2": "{{startIndex}} - {{endIndex}} of {{length}}"
+        },
+        "filter": "Filter"
+    },
+    "session": {
+        "myAccount": "My Account",
+        "myProfile": "My profile",
+        "changeProfile": "Change profile",
+        "logout": "Logout"
+    },
+    "deleteConfirmMessage": "Do you confirm the deletion of this data?",
+    "changePasswordConfirmMessage": "¿Are you sure you want to change your password?",
+    "sendMailPasswordConfirmMessage": "An email has been sent to you to change your password",
+    "saveErrorMessage": "An error occurred while saving the information",
+    "saveSuccessfullMessage": "The changes have been saved successfully",
+    "errorMessages": {
+        "rangedate": "The start date must be less than the end date",
+        "matDatepickerParse": "Invalidad format date",
+        "dateValidator": "Invalidad format date",
+        "emailAlreadyExist": "The email entered already exists in our records",
+        "AnalystExist": "The selected analyst has already been added previously",
+        "required": "This field is required",
+        "existent": "{{field}} already registered",
+        "email": "Enter a valid email address",
+        "number": "Invalidad format number",
+        "invalid": "Select a valid option",
+        "atLeastOneCheckboxChecked": "Select at least one option",
+        "pattern": "Invalid format",
+        "DateDoesntHaveBetaType": "The Beta of the instrument does not have its series calculated for the selected date.",
+        "atLeastOneFloatingPaymentRow": "Create al least one record."
+    },
+    "lists": {
+        "profiles": {
+            "administrator": "Administrator",
+            "analyst": "Analyst",
+            "client": "Client"
+        },
+        "languages": {
+            "spanish": "Spanish",
+            "english": "English"
+        },
+        "orderStatus": {
+            "initiated": "Initiated",
+            "inProgress": "InProgress",
+            "finalized": "Finalized"
+        },
+        "userStatus": {
+            "pending": "Pending",
+            "active": "Active",
+            "inactive": "Inactive"
+        },
+        "assessmentStatus": {
+            "notVisible": "Not visible",
+            "inProcess": "Inprocess",
+            "approved": "Approved",
+            "finished": "Finished"
+        },
+        "orderFrecuencies": {
+            "daily": "Daily",
+            "weekly": "Weekly",
+            "monthly": "Monthly",
+            "quarterly": "Quarterly",
+            "biannual": "Biannual",
+            "annual": "Annual",
+            "irregular": "Irregular"
+        },
+        "currencies": {
+            "eur": "Euro",
+            "usd": "Dollar"
+        },
+        "instrumentFrecuencies": {
+            "daily": "Daily",
+            "weekly": "Weekly",
+            "monthly": "Monthly"
+        },
+        "instrumentPeriodicity": {
+            "daily": "Daily",
+            "weekly": "Weekly",
+            "monthly": "Monthly",
+            "quarterly": "Quarterly",
+            "biannual": "Biannual",
+            "annual": "Annual",
+            "irregular": "Irregular",
+            "2years": "2 Years"
+        },
+        "instrumentPaymentFrequency": {
+            "monthly": "Monthly",
+            "quarterly": "Quarterly",
+            "fourMonths": "Four Months",
+            "annual": "Annual"
+        },
+        "instrumentReferenceFrequency": {
+            "monthly": "Monthly",
+            "quarterly": "Quarterly",
+            "biannual": "Biannual",
+            "annual": "Annual"
+        }
+    }
+}

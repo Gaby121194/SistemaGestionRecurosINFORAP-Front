@@ -1,0 +1,23 @@
+<div *ngIf="form" class="row ml-0 mr-0 date-picker">
+    <div class="text-box ml-0 p-0 mb-3 {{class}}"  style="width: 100%; "
+    [formGroup]="form" [ngClass]="{'text-box-error': hasError || isSubmitted}">
+      <label class="text-muted-sm mb-0 mt-0 ml-3 " style="width: 100%;">
+        {{required?labelName+ ' *':labelName}}
+      </label>
+      <div   class="position-relative  cursor-pointer"   >         
+          <div class="w-100 ml-3" >
+            <input formControlName="{{controlName}}" (click)="d.toggle();" style="width: 60% !important;  "  class="mt-0 pt-0"
+            type="text" ngbDatepicker #d="ngbDatepicker"  [minDate]="{year: 1900, month: 1, day: 1}"  [displayMonths]="'1'" (ngModelChange)="onChange($event)"  
+            placeholder="DD/MM/YYYY" />    
+            <i class="material-icons mr-4" (click)="d.toggle()" style="float: right;">calendar_today</i>
+           </div>
+          </div>
+           <!-- <a class="label centered cursor-pointer label ml-3 w-100"  >           
+          </a> -->         
+      </div>    
+      <div *ngIf="hasError || isSubmitted" class="cursor-pointer icons error bg-red text-box-icon-error "
+      ngbPopover="{{errorMessage}}" triggers="mouseenter:mouseleave" popoverClass="pop-hover-danger"></div>
+  </div>
+  <div class="row">
+    <!-- <app-show-errors *ngIf="isSubmitted" [control]="form.controls[controlName]"></app-show-errors> -->
+  </div>

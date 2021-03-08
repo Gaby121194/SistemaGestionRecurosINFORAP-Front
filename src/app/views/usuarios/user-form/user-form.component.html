@@ -1,0 +1,84 @@
+<div class="card-body" style="margin-right: 100px; margin-left: 100px;">
+  <div class=" mt-2">
+    <h2 class="title row ">{{title}}</h2>
+    <div class="row">
+      <div class="col-lg-6 col-md-8 con-sm-12 ">
+        <label>
+          {{subTitle}}
+        </label>
+      </div>
+    </div>
+    <br />
+    <ng-container *ngIf="formGroup">
+      <app-form (saveEvent)="save()" [formGroup]="formGroup">
+        <div class="form-body">
+          <input type="hidden" formControlName="id" />
+          <input type="hidden" formControlName="active" />
+          <app-text-box [labelName]="'Email'" [readonly]="id" [submitted]="submitted" [controlName]="'email'"
+            [class]="'col-11'" [form]="formGroup">
+          </app-text-box>
+          <ng-container *ngIf="isCurrentUser">
+            <div class="row">
+              <div class="col-6">
+                <app-text-box [class]="'col-10'" [labelName]="'Contraseña'" [type]="'password'" [submitted]="submitted"
+                  [controlName]="'password'" [form]="formGroup">
+                </app-text-box>
+              </div>
+              <div class="col-6">
+                <app-text-box [class]="'col-10'" [labelName]="'Confirme contraseña'" [type]="'password'"
+                  [submitted]="submitted" [controlName]="'rePassword'" [form]="formGroup">
+                </app-text-box>
+              </div>
+            </div>
+          </ng-container>
+          <div class="row">
+            <div class="col-6">
+              <app-text-box [class]="'col-10'" [labelName]="'Nombre'" [submitted]="submitted" [controlName]="'nombre'"
+                [form]="formGroup"  [errorPattern]="'El valor ingresado no es un valor alfabético válido'">
+              </app-text-box>
+            </div>
+            <div class="col-6">
+              <app-text-box [class]="'col-10'" [labelName]="'Apellido'" [submitted]="submitted"
+                [controlName]="'apellido'" [form]="formGroup" [errorPattern]="'El valor ingresado no es un valor alfabético válido'">
+              </app-text-box>
+            </div>
+          </div>
+          <div class="row">
+            <ng-container *ngIf="isSuperUser">
+              <div class="col-6">
+                <app-autocomplete [class]="'col-10'" [placeholderName]="'Seleccione ...'" [data]="empresas"
+                  [labelName]="'Empresa'" [submitted]="submitted" (changeData)="onEmpresaChange($event)"
+                  [controlName]="'idEmpresa'" [form]="formGroup">
+                </app-autocomplete>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="canEditRol">
+              <div class="col-6">
+                <app-drop-down-menu [class]="'col-10'" [placeholderName]="'Seleccione ...'" [data]="selRoles"
+                  [labelName]="'Rol'" [submitted]="submitted" [controlName]="'idRol'" [form]="formGroup"
+                  (changeData)="onRolChange($event)">
+                </app-drop-down-menu>
+              </div>
+            </ng-container>
+            
+            <ng-container *ngIf="!isSuperUser">
+              <div class="col-6">
+                <app-autocomplete [class]="'col-10'" [placeholderName]="'Seleccione ...'" [data]="humanResources"
+                  [labelName]="'Recurso humano'" [submitted]="submitted" [controlName]="'idRecursoHumano'"
+                  [form]="formGroup">
+                </app-autocomplete>
+              </div>
+            </ng-container>
+          </div>
+          <br />
+          <div class="row ml-0 mb-5  ">
+            <button type="submit" class="btn btn-primary col-3 ">{{btnSubmit}}<i
+                class="material-icons f-right">{{icon}}</i></button>
+            <button mat-dialog-close="true" class="btn btn-default ml-2 col-3"> Cancelar <i
+                class="material-icons f-right">cancel</i></button>
+          </div>
+        </div>
+      </app-form>
+    </ng-container>
+  </div>
+</div>

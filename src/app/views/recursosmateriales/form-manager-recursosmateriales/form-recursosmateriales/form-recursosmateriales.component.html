@@ -1,0 +1,51 @@
+<h2 class="title row ">{{title}}</h2>
+<div class="row">
+  <div class="col-lg-6 col-md-8 col-sm-12 "><label>{{subtitle}}</label></div>
+</div>
+<app-form (saveEvent)="save(0)" [formGroup]="formGroup">
+  <div class="form-body">  
+    <input type="hidden" formControlName="idTipoRecursoMaterial" required/>              
+    <app-text-box 
+      [labelName]="'Marca'"
+      [submitted]="submitted"
+      [controlName]="'marca'"
+
+      [errorPattern]="'La Marca no puede empezar con espacio o simbolos especiales'"
+      
+      [form]="formGroup">
+    </app-text-box>
+    <app-text-box 
+      [labelName]="'Modelo'"
+      [submitted]="submitted"
+      [controlName]="'modelo'"
+      [errorPattern]="'El Modelo no puede empezar con espacio o simbolos especiales'"
+      [form]="formGroup">
+    </app-text-box>
+    <app-drop-down-menu
+      [placeholderName] = "'Seleccione ...'"
+      [data] = "selTiposRecursosMateriales"
+      [labelName]="'Tipo de Recurso Material'"
+      [submitted]="submitted"
+      [controlName]="'idTipoRecursoMaterial'"
+      [form]="formGroup"
+    ></app-drop-down-menu>
+    <mat-checkbox
+      [disabled]="deshabMulti || serviciosAsignados"
+      [checked]="multiservicio"
+      labelPosition = "before"
+      (change)="onMultiservicioChange($event.checked)"
+      >Puede ser usado en múltiples servicios al mismo tiempo?
+    </mat-checkbox>   
+    <ngb-alert *ngIf="stockeable" type="warning" [dismissible]="false" class="col-6">
+      Un recurso stockeable no puede ser además multiservicio
+    </ngb-alert>
+    <ngb-alert *ngIf="serviciosAsignados" type="warning" [dismissible]="false" class="col-6">
+      Un recurso asignado a mas de un servicio y/o recurso no puede dejar de ser multiservicio
+    </ngb-alert>    
+    <div class="row ml-0 mb-5  ">
+      <button type="submit" [disabled]="formGroup?.invalid" style="margin-top: 20px;"class="btn btn-primary col-3">Guardar<i
+          class="material-icons f-right">arrow_right</i></button>
+          <button mat-dialog-close="true" style="margin-top: 20px;" class="btn btn-default col-3 ml-2 "> Cancelar <i class="material-icons f-right">cancel</i></button>
+    </div>
+  </div>
+</app-form>

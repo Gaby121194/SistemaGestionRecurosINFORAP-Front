@@ -1,0 +1,333 @@
+
+<perfect-scrollbar>
+  <div class="row float-right mb-3" style="margin-left: -150px;">
+    <button (click)="close()" type="button" class="btn btn-sm btn-default mr-3">
+        <i class="material-icons">close</i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="row" style="margin-right: -200px;">
+      <div>
+        <ul class="sidebar-list ml-3 mt-5">
+          <li *ngFor="let step of steps; index as i" [ngClass]="{'active': step.active == true}" (click)="goToStep(i)">
+            {{step.text}}
+          </li>
+        </ul>
+      </div>
+      <ng-container *ngIf="activeStep == 0">
+        <app-basic-list class="col-9" [title]="title" [subtitle]="subtitle" [showSearch]=false>
+          <div class="list-body">
+            <div class="card mr-3">
+              <div class="card-body">
+                <div class="row pl-3 pt-3">
+                  <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-text-box [labelName]="'Buscar en todos los campos'" [placeholderName]="'Ingrese ...'"
+                          [submitted]="submitted" [controlName]="'name'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-text-box>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados desde'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados hasta'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateTo'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+                    <div class="row">
+                      <button style="min-width: 0;" ngbPopover="Aplicar filtros" triggers="mouseenter:mouseleave"
+                        popoverClass="bg-white" class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+  
+                        <i class="material-icons ">filter_alt</i>
+                      </button>
+                      <button (click)="goToStep(0)" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete_sweep</i>
+                      </button>
+                      <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                        ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>N° de Contrato </th>
+                  <th>Encargado de Servicio</th>
+                  <th>Fecha de Inicio</th>
+                  <th>Fecha de Fin</th>
+                  <th>Cliente</th>
+                  <th>En curso</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="position: relative;"
+                  *ngFor="let item of filteredServiciosAsignados | paginate: { itemsPerPage: 4, currentPage: page }; index as i;">
+                  <td>
+                    {{item.servicio.nombre}}
+                  </td>
+                  <td>
+                    {{item.servicio.nroContrato}}
+                  </td>
+                  <td>
+                    {{item.encargado}}
+                  </td>
+                  <td>
+                    {{item.servicio.fechaInicio | date: 'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    {{item.servicio.fechaFin| date: 'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    {{item.cliente}}
+                  </td>
+                  <td>
+                    {{item.servicio.idMotivoBajaServicio ? 'No':'Si'}}
+                  </td>
+                  <td>
+                    <div class="trans text-center">
+                      <button class="btn btn-sm btn-danger" (click)="desasignarservicio(item.id)" ngbPopover="Desasignar"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete</i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="text-align: center;">
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+          </div>
+        </app-basic-list>
+      </ng-container>
+      <ng-container *ngIf="activeStep == 1">
+        <app-basic-list class="col-9" [title]="title" [subtitle]="subtitle" [showSearch]=false>
+          <div class="list-body">
+            <div class="card mr-3">
+              <div class="card-body">
+                <div class="row pl-3 pt-3">
+                  <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-text-box [labelName]="'Buscar en todos los campos'" [placeholderName]="'Ingrese ...'"
+                          [submitted]="submitted" [controlName]="'name'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-text-box>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados desde'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados hasta'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateTo'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+                    <div class="row">
+                      <button style="min-width: 0;" (click)="onSearch()" ngbPopover="Aplicar filtros"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                        class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+  
+                        <i class="material-icons ">filter_alt</i>
+                      </button>
+                      <button (click)="goToStep(1)" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete_sweep</i>
+                      </button>
+                      <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                        ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                      </button>
+                      <button [disabled]="booleano" (click)="createAsignacion()" ngbPopover="Asignar recurso" triggers="mouseenter:mouseleave"
+                        popoverClass="bg-white" class="btn btn-primary mt-3 mr-3 j-center d-flex">
+                        <i class="material-icons">note_add</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Fecha de asignación</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Ubicación </th>
+                  <th>Tipo</th>
+                  <th>Stockeable</th>
+                  <th>Multiservicio</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="position: relative;"
+                  *ngFor="let item of filteredRecursosAsignados | paginate: { itemsPerPage: 7, currentPage: page }; index as i;">
+                  <td>
+                    {{item.fechaAsignado | date: 'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    {{item.recursoMaterial?.marca}}
+                  </td>
+                  <td>
+                    {{item.recursoMaterial?.modelo}}
+                  </td>
+                  <td>
+                    {{item.referenciaUbicacion != null ? item.referenciaUbicacion : "No tiene"}}
+                  </td>
+                  <td>
+                    {{item.recursoMaterial.idTipoRecursoMaterialNavigation.descripcion}}
+                  </td>
+                  <td>
+                    {{item.recursoMaterial?.stockeable? 'Sí ' : 'No'}}
+                  </td>
+                  <td>
+                    {{item.recursoMaterial?.multiservicio? 'Sí ': 'No'}}
+                  </td>
+                  <td>
+                    <div class="row">
+                      <button class="btn btn-sm btn-danger" (click)="desasignar(item.id)" ngbPopover="Desasignar"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete</i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ngb-alert  *ngIf="booleano" type="danger" [dismissible]="false" style="font-size: medium; text-align: center;">
+              No se puede asignar recursos a un recurso stockeable
+            </ngb-alert>   
+            <div style="text-align: center;">
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+          </div>
+        </app-basic-list>
+      </ng-container>
+      <ng-container *ngIf="activeStep == 2">
+        <app-basic-list class="col-9" [title]="title" [subtitle]="subtitle" [showSearch]=false>
+          <div class="list-body">
+            <div class="card mr-3">
+              <div class="card-body">
+                <div class="row pl-3 pt-3">
+                  <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-text-box [labelName]="'Buscar en todos los campos'" [placeholderName]="'Ingrese ...'"
+                          [submitted]="submitted" [controlName]="'name'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-text-box>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados desde'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                          [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <app-datepicker [labelName]="'Creados hasta'" [hasError]="hasErrors" [submitted]="submitted"
+                          [controlName]="'creationDateTo'" [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="FormSearch">
+                        </app-datepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+                    <div class="row">
+                      <button style="min-width: 0;" (click)="onSearch()" ngbPopover="Aplicar filtros"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                        class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+  
+                        <i class="material-icons ">filter_alt</i>
+                      </button>
+                      <button (click)="goToStep(1)" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete_sweep</i>
+                      </button>
+                      <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                        ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                      </button>
+                      <button [disabled]="booleano == true" (click)="createAsignacion()" ngbPopover="Asignar recurso" triggers="mouseenter:mouseleave"
+                        popoverClass="bg-white" class="btn btn-primary mt-3 mr-3 j-center d-flex">
+                        <i class="material-icons">note_add</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Fecha de asignación</th>
+                  <th>Descripción</th>
+                  <th>Ubicación </th>
+                  <th>Fecha Vencimiento</th>
+                  <th>Tipo</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="position: relative;"
+                  *ngFor="let item of filteredRecursosAsignados | paginate: { itemsPerPage: 7, currentPage: page }; index as i;">
+                  <td>
+                    {{item.fechaAsignado | date: 'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    {{item.recursoRenovable?.idRecursoNavigation?.descripcion}}
+                  </td>
+                  <td>
+                    {{item.referenciaUbicacion != null ? item.referenciaUbicacion : "No tiene"}}
+                  </td>
+                  <td>
+                    {{item.recursoRenovable?.fechaVencimiento | date: 'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    {{item.recursoRenovable?.idTipoRecursoRenovableNavigation?.descripcion}}
+                  </td>
+                  <td>
+                    <div class="row">
+                      <button class="btn btn-sm btn-danger" (click)="desasignar(item.id)" ngbPopover="Desasignar"
+                        triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                        <i class="material-icons">delete</i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ngb-alert  *ngIf="booleano" type="danger" [dismissible]="false" style="font-size: medium; text-align: center;">
+              No se puede asignar recursos a un recurso stockeable
+            </ngb-alert>   
+            <div style="text-align: center;">
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+          </div>
+        </app-basic-list>
+      </ng-container>
+    </div>
+  </div>
+</perfect-scrollbar>

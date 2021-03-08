@@ -1,0 +1,144 @@
+<app-basic-list [title]="'Servicios'" [showCreate]="false" [showSearch]="false">
+
+    <div class="list-body">
+        <div  class="row mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <button class="btn btn-sm btn-default float-right mr-3" (click)="goList()" ngbPopover="Vista de lista"
+                    triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                    [ngClass]="{'btn-primary': !showDashboard,'btn-default': showDashboard }">
+                    <i class="material-icons">table_rows</i>
+                </button>
+                <button class="btn btn-sm  float-right mr-3" (click)="goDashboard()" ngbPopover="Vista de dashboard"
+                    triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                    [ngClass]="{'btn-primary': showDashboard,'btn-default': !showDashboard }">
+                    <i class="material-icons">dashboard</i>
+                </button>
+            </div>
+        </div>
+        <ng-container *ngIf="!showDashboard; else dashboard">
+            <div class="card mr-3">
+                <div class="card-body ">
+                    <div class="row pl-3 pt-3">
+                        <div class="col-lg-9 col-md-9 col-sm-8">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <app-text-box [labelName]="'Nombre o N° de contrato'" [submitted]="submitted"
+                                        [controlName]="'name'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                        [form]="formGroup">
+                                    </app-text-box>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <app-datepicker [labelName]="'Fecha de inicio desde'" [hasError]="hasErrors" [submitted]="submitted"
+                                        [controlName]="'fechaInicioFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                        [form]="formGroup">
+                                    </app-datepicker>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <app-datepicker [labelName]="'Fecha de inicio hasta'" [hasError]="hasErrors" [submitted]="submitted"
+                                        [controlName]="'fechaInicioTo'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                        [form]="formGroup">
+                                    </app-datepicker>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <app-datepicker [labelName]="'Fecha de fin desde'" [hasError]="hasErrors" [submitted]="submitted"
+                                        [controlName]="'fechaFinFrom'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                        [form]="formGroup">
+                                    </app-datepicker>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <app-datepicker [labelName]="'Fecha de fin hasta'" [hasError]="hasErrors" [submitted]="submitted"
+                                        [controlName]="'fechaFinTo'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                                        [form]="formGroup">
+                                    </app-datepicker>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+                            <div class="row">
+                                <button (click)="onSearch()" style="min-width: 0;" ngbPopover="Aplicar filtros"
+                                    triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                                    class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+
+                                    <i class="material-icons ">filter_alt</i>
+                                </button>
+                                <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex"
+                                    ngbPopover="Limpiar filtros" triggers="mouseenter:mouseleave"
+                                    popoverClass="bg-white">
+                                    <i class="material-icons">delete_sweep</i></button>
+                                <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                                    ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave"
+                                    popoverClass="bg-white">
+                                    <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                                </button>
+                                <button style="min-width: 100px;" (click)="onCreate()"
+                                    class="btn btn-primary mt-3  j-center d-flex">Crear
+                                    <i class="material-icons ml-3">note_add</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table  mr-3 w-100   p-0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>N° de contrato</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha de Fin</th>
+                        <th>Cliente</th>
+                        <th>En curso</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="position: relative;" *ngFor="let item of servicios | paginate: { itemsPerPage: 10, currentPage: page }; index as i">
+                        <td>
+                            {{item.nombre}}
+                        </td>
+                        <td>
+                            {{item.nroContrato}}
+                        </td>
+                        <td>
+                            {{item.fechaInicio | date : 'dd-MM-yyyy'}}
+                        </td>
+                        <td>
+                            {{item.fechaFin | date : 'dd-MM-yyyy'}}
+                        </td>
+                        <td>
+                            {{item.cliente?.razonSocial}}
+                        </td>
+                        <td >
+                            <ng-container *ngIf="item.active ==true; else elseTemplate">
+                               <span>Si</span>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <span class="cursor-pointer" ngbPopover="{{item.motivoBaja}}" triggers="mouseenter:mouseleave"
+                                popoverClass="bg-white">No</span>
+                            </ng-template>                          
+                        </td>
+                        <td>
+                            <div *ngIf="item.active == true" class="row">
+                                <button (click)="edit(item.id)" class="btn btn-sm btn-primary mr-1"><i
+                                        class="material-icons">edit</i></button>
+                                <button (click)="delete(item.id)" class="btn btn-sm btn-danger "><i
+                                        class="material-icons">delete</i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </ng-container>
+        <ng-template #dashboard>
+            <app-dashboard-servicio></app-dashboard-servicio>
+        </ng-template>
+    </div>
+</app-basic-list>

@@ -1,0 +1,24 @@
+<div class="mb-3">
+  <div class="row ml-0 position-relative" style="width: 100%;">
+    <div class="text-box p-0  position-relative  {{class}}" [formGroup]="form" style="width: 100%;"
+      [ngClass]="{'text-box-error': hasError || isSubmitted}">
+      <label class="text-muted-sm mb-0 mt-0 ml-3 " style="width: 100%;">
+        {{labelName}}{{required === true?' *':''}}
+      </label>
+      <input type="{{type}}" style="width: 60%;" class="mt-0 pt-0  ml-3 " (keyup)="onChange()"
+        [readonly]='readonly' placeholder="{{ placeholderName }}" formControlName="{{controlName}}" />
+        <i *ngIf="icon" ngbPopover="{{iconMessage}}" (click)="onIconClick($event)" triggers="mouseenter:mouseleave"
+          popoverClass="bg-white" class="material-icons cursor-pointer m-0"
+          style="position: absolute ; right:16px;top:16px">{{icon}}</i>
+    </div>
+    <div *ngIf="hasError || isSubmitted" class="cursor-pointer icons error bg-red text-box-icon-error "
+      ngbPopover="{{errorMessage}}" triggers="mouseenter:mouseleave" popoverClass="pop-hover-danger"></div>
+  </div>
+  <label *ngIf="tip" class="row  text-muted-sm ml-0 mt-0" [ngClass]="{'label-error': hasError || isSubmitted}"
+    style="width: 100%">
+    {{tip}}
+  </label>
+  <!-- <div class="row">
+    <app-show-errors *ngIf="submitted" [control]="form.controls[controlName]"></app-show-errors>
+  </div> -->
+</div>

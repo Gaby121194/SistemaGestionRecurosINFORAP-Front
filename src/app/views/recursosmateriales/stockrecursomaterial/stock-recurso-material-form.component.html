@@ -1,0 +1,44 @@
+<div class="card-body" style="margin-right: 100px; margin-left: 100px;">
+  <div class=" mt-2">
+    <h2 class="title row ">{{title}}</h2>
+    <div class="row">
+      <div class="col-12 "><label>{{subtitle}}</label>
+      </div>
+    </div>
+    <br />
+    <app-form (saveEvent)="save()" [formGroup]="formGroup">
+      <div class="form-body">  
+        <input type="hidden" formControlName="idUbicacion" required/> 
+        <app-drop-down-menu 
+          [hidden]="metodo"
+          [class]="'col-lg-10 col-md-10 col-sm-10'"
+          [placeholderName] = "'Seleccione ...'"
+          [data] = "selUbicaciones"
+          [labelName]="'Ubicación'"
+          [submitted]="submitted"
+          [controlName]="'idUbicacion'"
+          [form]="formGroup"
+        ></app-drop-down-menu>
+
+        <ngb-alert class="col-lg-11 col-md-11 col-sm-11" *ngIf="metodo" type="danger" [dismissible]="false">
+          No se puede modificar la ubicación
+        </ngb-alert>    
+
+        <app-text-box 
+          [class]="'col-lg-10 col-md-10 col-sm-10'"
+          [labelName]="'Cantidad Total'"
+          [submitted]="submitted"
+          [controlName]="'cantidadTotal'"
+          [errorPattern]="'El valor ingresado no es un valor numérico válido'"
+          [form]="formGroup">
+        </app-text-box>
+      <br/>
+        <div class="row ml-0 mb-5  ">
+          <button [disabled]="formGroup.invalid" type="submit" mat-dialog-close="true" class="btn btn-primary col-5">{{button}}<i
+              class="material-icons f-right">{{icon}}</i></button>
+              <button mat-dialog-close="true"  class="btn btn-default col-5 ml-2"> Cancelar <i class="material-icons f-right">cancel</i></button>
+        </div>
+      </div>
+    </app-form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.icons {
+    height: 24px;
+    width: 24px;
+    mask-position: center;
+    background-color: #263040;
+}
+.icons-sm {
+    mask-size: 18px 18px !important;
+    height: 18px;
+    width: 18px;
+}
+.icons-lg {
+    width: 100%;
+    mask-position: center;
+}
+.delete {
+    mask: url("/assets/icons/delete.svg") no-repeat;
+}
+.search {
+    mask: url("/assets/icons/search.svg") no-repeat;
+}
+.arrow-right {
+    mask: url("/assets/icons/arrow-right.svg") no-repeat;
+}
+.error {
+    mask: url("/assets/icons/error.svg") no-repeat;
+}
+.forbiden {
+    mask : url("/assets/icons/denied_sign.svg") no-repeat;
+}

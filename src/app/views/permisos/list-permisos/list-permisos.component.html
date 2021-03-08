@@ -1,0 +1,93 @@
+<app-basic-list 
+  [title]="'Permisos'"  
+  [showSearch]="false"
+  >
+  <div class="list-body" style="min-height: 400px">
+    <div class="card mr-3">
+      <div class="card-body">
+        <div class="row pl-3 pt-3">
+          <div class="col-lg-9 col-md-9 col-sm-8">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-text-box [labelName]="'Buscar en todos los campo'" [submitted]="submitted" [placeholderName]="'Ingrese ...'" [controlName]="'name'"
+                  [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-text-box>
+              </div>            
+            </div>
+            <div class="row">
+              
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <app-datepicker [labelName]="'Creados desde'" [hasError]="hasErrors" [submitted]="submitted" [controlName]="'creationDateFrom'"
+                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+              </app-datepicker>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <app-datepicker [labelName]="'Creados hasta'" [hasError]="hasErrors" [submitted]="submitted" [controlName]="'creationDateTo'"
+                [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+              </app-datepicker>
+            </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+            <div class="row">
+              <button (click)="onSearch()" style="min-width: 0;"
+              ngbPopover="Aplicar filtros" triggers="mouseenter:mouseleave" popoverClass="bg-white"
+               class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+                
+                <i class="material-icons ">filter_alt</i>                
+              </button>
+              <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="material-icons">delete_sweep</i>
+              </button>
+              <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green" ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+              </button>
+              <button  style="min-width: 100px;" (click)="create()" class="btn btn-primary mt-3  j-center d-flex">
+                Crear
+                <i class="material-icons ml-3">note_add</i>
+              </button>
+            </div>  
+          </div> 
+        </div>
+      </div>
+    </div>
+    <table class="table  mr-3 w-100   p-0">
+      <thead>
+        <tr>
+          <th>Fecha de creación</th>
+          <th>Nombre</th>
+          <th>Descripción </th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="position: relative;" *ngFor="let item of permisos  | paginate: { itemsPerPage: 10, currentPage: page }; index as i">
+          <td>
+            {{item.creationDate | date: 'dd/MM/yyy'}}
+          </td>
+          
+          <td>
+            {{item.nombrePermiso}}
+          </td>
+          <td>
+            {{ item.descripcionPermiso}}
+          </td>
+          <td>
+            <div class="row">
+              <button (click)="edit(item.id)" ngbPopover="Editar" triggers="mouseenter:mouseleave" popoverClass="bg-white"  class="btn btn-sm btn-primary mr-1"><i class="material-icons">edit</i></button>
+              <button *ngIf="item.active==true" (click)="disable(item.id)" ngbPopover="Deshabilitar"
+              triggers="mouseenter:mouseleave" popoverClass="bg-white" class="btn btn-sm btn-danger"><i
+                class="material-icons">remove_circle</i></button>
+            <button *ngIf="!item.active" (click)="enable(item.id)" ngbPopover="Habilitar"
+              triggers="mouseenter:mouseleave" popoverClass="bg-white" class="btn btn-sm btn-success mr-1 ">
+              <i class="material-icons">refresh</i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: center;">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</app-basic-list>

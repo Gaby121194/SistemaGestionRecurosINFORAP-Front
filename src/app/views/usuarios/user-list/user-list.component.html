@@ -1,0 +1,120 @@
+<app-basic-list [title]="'Usuarios'" [showCreate]="false" [showSearch]="false" (onCreateEvent)="onCreate()">
+
+  <div class="list-body">
+    <div class="card mr-3">
+      <div class="card-body ">
+        <div class="row pl-3 pt-3">
+          <div class="col-lg-9 col-md-9 col-sm-8">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-text-box [labelName]="'Buscar en todos los campos '" [placeholderName]="'Ingrese ...'"
+                  [submitted]="submitted" [controlName]="'name'" [class]="'col-lg-10 col-md-10 col-sm-10'"
+                  [form]="formGroup">
+                </app-text-box>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <ng-container *ngIf="isSuperUser">
+                  <app-autocomplete [placeholderName]="'Seleccione ...'" [data]="empresas" [labelName]="'Empresa'"
+                    [submitted]="submitted" [class]="'col-lg-10 col-md-10 col-sm-10'" [controlName]="'idEmpresa'"
+                    [form]="formGroup"></app-autocomplete>
+                </ng-container>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Creados desde'" [submitted]="submitted" [controlName]="'creationDateFrom'" [hasError]="hasErrors"
+                  [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <app-datepicker [labelName]="'Creados hasta'" [submitted]="submitted" [controlName]="'creationDateTo'" [hasError]="hasErrors"
+                  [class]="'col-lg-10 col-md-10 col-sm-10'" [form]="formGroup">
+                </app-datepicker>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-4 text-right">
+            <div class="row">
+              <button (click)="onSearch()" style="min-width: 0;" ngbPopover="Aplicar filtros"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                class="btn btn-secundary mt-3  mr-3 d-flex text-right">
+                <i class="material-icons ">filter_alt</i>
+              </button>
+              <button (click)="clear()" class="btn btn-default mt-3 mr-3 d-flex" ngbPopover="Limpiar filtros"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white"><i class="material-icons">delete_sweep</i>
+              </button>
+              <button (click)="exportToExcel()" class="btn btn-outline-success mt-3 mr-3 d-flex green"
+                ngbPopover="Exportar a Excel" triggers="mouseenter:mouseleave" popoverClass="bg-white">
+                <i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+              </button>
+              <button style="min-width: 100px;" (click)="onCreate()" class="btn btn-primary mt-3  j-center d-flex">Crear
+                <i class="material-icons ml-3">note_add</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table  mr-3 w-100   p-0">
+      <thead>
+        <tr>
+          <th>Fecha de creación</th>
+          <th *ngIf="isSuperUser">Empresa</th>
+          <th>Apellido, nombre</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="position: relative;"
+          *ngFor="let item of filteredUsers| paginate: { itemsPerPage: 10, currentPage: page };  index as i">
+          <td>
+            {{item.creationDate | date : 'dd/MM/yyyy'}}
+          </td>
+          <td *ngIf="isSuperUser">
+            {{item.empresa.razonSocial}}
+          </td>
+          <td>
+            {{item.apellido}}, {{ item.nombre }}
+          </td>
+          <td>
+            {{item.email}}
+          </td>
+          <td>
+            <span *ngIf="item.rol">
+              {{item.rol.descripcion}}
+            </span>
+          </td>
+
+          <td>
+            <div class="row">
+              <button (click)="edit(item.id)"
+                class="btn btn-sm btn-primary mr-1"
+                ngbPopover="Editar"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                >
+                <i class="material-icons">edit</i>
+              </button>
+              <button (click)="resetPassword(item.email)"
+                ngbPopover="Restablecer contraseña"
+                triggers="mouseenter:mouseleave" popoverClass="bg-white"
+                class="btn btn-sm btn-warning mr-1 ">
+                <i class="material-icons"  style="-webkit-text-fill-color:white">refresh</i>
+              </button>
+              <button (click)="delete(item.id)" 
+                class="btn btn-sm btn-danger mr-1"
+                ngbPopover="Eliminar"
+                triggers="mouseenter:mouseleave" 
+                popoverClass="bg-white"
+                > <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: center;">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</app-basic-list>

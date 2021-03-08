@@ -1,0 +1,26 @@
+<div class="card-body" style="margin-right: 70px; margin-left: 70px;">
+  <div class=" mt-2">
+    <h2 class="title row ">{{title}}</h2>
+    <div class="row">
+      <div style= "margin-left: 20px;"><label>{{subtitle}}</label>
+      </div>
+    </div>
+    <br />
+    <app-form (saveEvent)="save()" [formGroup]="formGroup">
+      <div class="form-body">  
+        <app-text-box 
+          [labelName]="'Descripción'"
+          [submitted]="submitted"
+          [controlName]="'descripcion'"
+          [form]="formGroup">
+        </app-text-box>
+      <br/>
+        <div class="row">
+          <button mat-dialog-close="true" [disabled]="formGroup.invalid" type="submit" class="btn btn-primary col-3 ml-3">{{button}}<i
+              class="material-icons f-right">{{icon}}</i></button>
+              <button mat-dialog-close="true"  class="btn btn-default ml-2 col-3"> Cancelar <i class="material-icons f-right">cancel</i></button>
+        </div>
+      </div>
+    </app-form>
+  </div>
+</div>

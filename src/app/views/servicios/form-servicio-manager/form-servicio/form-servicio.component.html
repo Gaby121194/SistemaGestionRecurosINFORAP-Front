@@ -1,0 +1,53 @@
+<h2 class="title row ">{{title}}</h2>
+<div class="row">
+    <div class="col-lg-6 col-md-8 con-sm-12 "><label>{{subtitle}}</label>
+    </div>
+</div>
+<app-form (saveEvent)="save()" [formGroup]="formGroup">
+    <div class="form-body">
+        <!-- <input type="hidden" formControlName="id" /> -->
+        <!-- <input type="hidden" formControlName="idEmpresa" /> -->
+        <div>
+            <app-text-box [labelName]="'Nombre o designación'" [submitted]="submitted" [controlName]="'nombre'"
+                [class]="'col-lg-10 col-md-10 col-sm-9'" [form]="formGroup">
+            </app-text-box>
+            <app-text-box [class]="'col-lg-10 col-md-10 col-sm-9'" [labelName]="'Número de contrato'"
+                [icon]="'autorenew'" [iconMessage]="'Generar N° de contrato'"
+                (iconClickEvent)="generateContractNumber()" [submitted]="submitted" [controlName]="'nroContrato'"
+                [form]="formGroup">
+            </app-text-box>
+
+
+            <app-text-box [class]="'col-lg-10 col-md-10 col-sm-9'" [labelName]="'Objetivo'" [submitted]="submitted"
+                [controlName]="'objetivo'" [form]="formGroup">
+            </app-text-box>
+            <app-datepicker [class]="'col-lg-10 col-md-10 col-sm-9'" [labelName]="'Fecha de Inicio'"
+                [submitted]="submitted" [controlName]="'fechaInicio'" [form]="formGroup">
+            </app-datepicker>
+            <app-datepicker [class]="'col-lg-10 col-md-10 col-sm-9'" [labelName]="'Fecha de Fin'"
+                [submitted]="submitted" [controlName]="'fechaFin'" [form]="formGroup">
+            </app-datepicker>
+            <app-autocomplete [placeholderName]="'Seleccione ...'" [class]="'col-lg-10 col-md-10 col-sm-9'"
+                [data]="clients" [labelName]="'Cliente'" [submitted]="submitted" [controlName]="'idCliente'"
+                [form]="formGroup" (changeData)="onClientChanges($event)">
+            </app-autocomplete>
+            <app-autocomplete [placeholderName]="'Seleccione ...'" [class]="'col-lg-10 col-md-10 col-sm-9'"
+                [data]="humanResources" [labelName]="'Encargado de servicio'" [submitted]="submitted"
+                [controlName]="'idRecursoHumano1'" [form]="formGroup">
+            </app-autocomplete>
+            <br />
+            <div class="row ml-0 mb-5  ">
+                <div class="ml-0 pl-0 col-lg-10 col-md-10 col-sm-9">
+                    <button type="submit" [disabled]="formGroup?.invalid"
+                        class="btn btn-primary col-lg-6 col-md-6 col-sm-6">{{button}}<i
+                            class="material-icons f-right">{{icon}}</i></button>
+                    <button type="reset" class="btn btn-default col-lg-6 col-md-6 col-sm-6"
+                        (click)="onNoClick()">Cancelar<i class="material-icons f-right">cancel</i></button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</app-form>
